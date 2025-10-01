@@ -1,9 +1,13 @@
+import Item from "../Item/Item"
 
-
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = ({products}) => {
   return (
     <div>
-      <h1>{greeting}</h1>
+      {
+        products.map((product) => (
+          <Item product={product} key={product.id}/>
+        ))
+      }
     </div>
   )
 }

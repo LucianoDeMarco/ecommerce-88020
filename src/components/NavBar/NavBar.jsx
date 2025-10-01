@@ -10,9 +10,9 @@ const NavBar = () => (
         </div>
     
         <ul className="categoria">
-            <li>Servicios</li>
-            <li>Productos</li>
-            <li>Proyectos Realizados</li>
+            <li>Mesas</li>
+            <li>Sillas</li>
+            <li>Muebles</li>
         </ul>
 
         <CartWidget />
