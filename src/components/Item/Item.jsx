@@ -1,10 +1,11 @@
 
 
-function Item() {
+const Item = ({ product }) => {
   return (
-    <div>
-      
-    </div>
+      <div> 
+        <p>{product.name}</p>
+        <p>Precio: {product.price}</p>
+      </div>
   )
 }
 

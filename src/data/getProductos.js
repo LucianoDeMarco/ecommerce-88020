@@ -1,7 +1,11 @@
-import products from './data/products.json';
+import products from './products.json';
 
-const getProducts = (resolve) => {
-   
+const getProducts = () => {
+   return new Promise((resolve) => {
+        setTimeout(() =>{
+            resolve(products);
+        },3000)
+   })
 }
 
 export default getProducts;

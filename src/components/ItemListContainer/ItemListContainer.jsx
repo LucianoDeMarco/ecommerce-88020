@@ -1,13 +1,24 @@
-import Item from "../Item/Item"
+import getProducts from "../../data/getProductos";
+import ItemList from "../ItemList/ItemList";
+import { useState,useEffect } from "react"
 
-const ItemListContainer = ({products}) => {
+const ItemListContainer = ({greeting}) => {
+
+  const [products,setProducts] = useState([]);
+    
+  useEffect(()=> {
+
+    getProducts()
+      .then((data) => {
+        setProducts(data)
+      })
+
+  }, [])
+
   return (
     <div>
-      {
-        products.map((product) => (
-          <Item product={product} key={product.id}/>
-        ))
-      }
+      <h2>{greeting}</h2>
+      <ItemList products={products} />
     </div>
   )
 }
