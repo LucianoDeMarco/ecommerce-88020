@@ -6,7 +6,7 @@
     "description": "Mesa de madera maciza de roble, acabado natural. Dimensiones: 180x90cm",
     "category": "mesas",
     "stock": 5,
-    "image": ""
+    "image": "/Image/Mesa-Rustica.webp"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "description": "Mesa ratona estilo industrial con estructura de hierro y tapa de madera reciclada",
     "category": "mesas",
     "stock": 4,
-    "image": ""
+    "image": "/Image/Mesa-Ratona-Industrial.webp"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "description": "Silla de madera de álamo con diseño vintage y tapizado en pana",
     "category": "sillas",
     "stock": 12,
-    "image": ""
+    "image": "/Image/silla-vintage.webp"
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "description": "Banco alto para barra o desayunador. Madera maciza con detalles en hierro",
     "category": "sillas",
     "stock": 10,
-    "image": ""
+    "image": "/Image/banco-de-bar.webp"
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "description": "Biblioteca modular de pino con 6 estantes ajustables. Dimensiones: 200x160cm",
     "category": "muebles",
     "stock": 3,
-    "image": ""
+    "image": "/Image/Biblioteca-Modular.webp"
   },
   {
     "id": 6,
@@ -51,7 +51,7 @@
     "description": "Rack para TV flotante de madera de pino con acabado nogal. Incluye pasacables",
     "category": "muebles",
     "stock": 6,
-    "image": ""
+    "image": "/Image/rack-tv-flotante.webp"
   },
   {
     "id": 7,
@@ -60,6 +60,6 @@
     "description": "Escritorio funcional para home office con cajones y organizador. Madera de guatambú",
     "category": "muebles",
     "stock": 8,
-    "image": ""
+    "image": "/Image/escritorio-home-office.webp"
   }
 ]
