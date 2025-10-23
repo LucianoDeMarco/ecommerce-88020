@@ -97,7 +97,7 @@
     box-shadow: 0 4px 8px rgba(44, 24, 16, 0.2);
 }
 
-/* Responsive design */
+/* Responsive*/
 @media (max-width: 768px) {
     .item-detail-card {
         flex-direction: column;
