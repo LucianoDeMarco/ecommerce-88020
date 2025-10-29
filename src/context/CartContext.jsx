@@ -15,7 +15,7 @@ const CartProvider = ({ children }) => {
 
             // Si el producto ya está en el carrito
             if (existingProduct) {
-            const updatedCart = prevCart.map(p => {
+                const updatedCart = prevCart.map(p => {
                 if (p.id === newProduct.id) {
                 const totalQty = Math.min(p.quantity + addedQty, stock);
                 return { ...p, quantity: totalQty };
