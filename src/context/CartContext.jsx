@@ -1,34 +1,27 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 //Creo el contexto del carrito
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
 
-    const [cart, setCart] = useState([]);
+    const cartLocalStorage = JSON.parse(localStorage.getItem("cart-ecommerce"));
+    const [cart, setCart] = useState(cartLocalStorage ? cartLocalStorage : []);
+
+    useEffect(()=> {
+        localStorage.setItem("cart-ecommerce", JSON.stringify(cart));
+    }, [cart]);
 
     const addProduct = (newProduct) => {
-        setCart(prevCart => {
-            const existingProduct = prevCart.find(p => p.id === newProduct.id);
-            const stock = Number(newProduct.stock);
-            const addedQty = Number(newProduct.quantity) || 1;
+        const indexProduct = cart.findIndex((productCart)=> productCart.id == newProduct.id);
 
-            // Si el producto ya está en el carrito
-            if (existingProduct) {
-                const updatedCart = prevCart.map(p => {
-                if (p.id === newProduct.id) {
-                const totalQty = Math.min(p.quantity + addedQty, stock);
-                return { ...p, quantity: totalQty };
-                }
-                return p;
-            });
-            return updatedCart;
-            }
-
-            // Si es un producto nuevo
-            const qtyToAdd = Math.min(addedQty, stock);
-            return [...prevCart, { ...newProduct, quantity: qtyToAdd }];
-        });
+        if(indexProduct === -1){
+            setCart( [ ...cart,newProduct ] );
+        }else{
+            const newCart = [ ...cart ];
+            newCart[indexProduct].quantity = newCart[indexProduct].quantity + newProduct.quantity;
+            setCart(newCart);
+        }
     };
 
     const totalQuantity = () => {
