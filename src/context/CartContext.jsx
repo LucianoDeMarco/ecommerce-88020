@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { createContext, useEffect, useState } from "react";
 
 //Creo el contexto del carrito
@@ -13,16 +14,39 @@ const CartProvider = ({ children }) => {
     }, [cart]);
 
     const addProduct = (newProduct) => {
-        const indexProduct = cart.findIndex((productCart)=> productCart.id == newProduct.id);
+        const indexProduct = cart.findIndex(
+        (productCart) => productCart.id === newProduct.id
+        );
 
-        if(indexProduct === -1){
-            setCart( [ ...cart,newProduct ] );
-        }else{
-            const newCart = [ ...cart ];
-            newCart[indexProduct].quantity = newCart[indexProduct].quantity + newProduct.quantity;
-            setCart(newCart);
+        if (indexProduct === -1) {
+        const quantityToAdd =
+            newProduct.quantity > newProduct.stock
+            ? newProduct.stock
+            : newProduct.quantity;
+
+        if (newProduct.quantity > newProduct.stock) {
+            toast.warn(`Stock máximo disponible: ${newProduct.stock} unidades`);
         }
+
+        setCart([...cart, { ...newProduct, quantity: quantityToAdd }]);
+        } else {
+            const newCart = [...cart];
+            const currentQuantity = newCart[indexProduct].quantity;
+            const totalQuantity = currentQuantity + newProduct.quantity;
+
+            if (totalQuantity > newProduct.stock) {
+                toast.info(
+                `No puedes agregar más de ${newProduct.stock} unidades de "${newProduct.name}"`
+                );
+            }
+
+            newCart[indexProduct].quantity =
+                totalQuantity > newProduct.stock ? newProduct.stock : totalQuantity;
+
+            setCart(newCart);
+     }
     };
+
 
     const totalQuantity = () => {
         const quantity = cart.reduce( (total, productCart) => total + productCart.quantity, 0 );

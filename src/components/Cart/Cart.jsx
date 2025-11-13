@@ -37,6 +37,7 @@ const Cart = () => {
 
                     <div className="cart-summary">
                         <h2>Precio total: $ {totalPrice().toLocaleString()}</h2>
+                        <Link className="checkout-link" to="/checkout">Continuar Compra</Link>
                         <button className="btn btn-clear" onClick={deleteCart}>Vaciar Carrito</button>
                     </div>
                 </>
