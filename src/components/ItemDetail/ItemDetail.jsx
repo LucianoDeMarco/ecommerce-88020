@@ -1,14 +1,16 @@
 import ItemCount from '../ItemCount/ItemCount.jsx';
-import './ItemDetail.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext.jsx';
 import { Link } from "react-router-dom";
+import './ItemDetail.css';
 
 const ItemDetail = ({ product }) => {
 
   const { addProduct } = useContext(CartContext);
+  const [viewItemCount, setViewItemCount] = useState(true);
 
   const addToCart = (count) => {
+    setViewItemCount(false);
     const newProduct = { ...product, quantity : count};
     addProduct(newProduct);
   }
@@ -25,9 +27,15 @@ const ItemDetail = ({ product }) => {
           <p className="item-detail-description">{product.description}</p>
           <p className="item-detail-price">$ {product.price?.toLocaleString()}</p>
           <p className="item-detail-stock">Stock disponible: {product.stock} unidades</p>
-
-          <ItemCount stock={product.stock} addToCart={addToCart} />
+          {
+            viewItemCount ? (
+              <ItemCount stock={product.stock} addToCart={addToCart} />
+            ) : (
+              <Link to="/cart" className="go-to-cart-link">Ir al Carrito</Link>
+            )
+          }
           <Link to="/" className="back-home-link">Volver al inicio</Link>
+
         </div>
       </div>
     </div>
